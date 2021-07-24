@@ -1,0 +1,39 @@
+{% extends "layout01.html" %}
+{% block temp %}
+
+
+
+    <div class="content-section">
+ 
+
+        <div class="form-group">
+          <form method="POST" action="{{ url_for('predict')}}">
+              <input type="text" name="Gender" class="form-control" placeholder="Gender" required="required" /><br><br>
+              <input type="text" name="Age" class="form-control" placeholder = "Age"required="required" /><br><br>
+              <input type="text" name="Driving_License" class="form-control" placeholder="Driving_License" required="required" /><br><br>
+        
+              <input type="text" name="Region_Code" class="form-control" placeholder="Region_Code" required="required" /><br><br>
+              <input type="text" name="Previously_Insured"class="form-control" placeholder="Previously_Insured" required="required" /><br><br>
+              <input type="text" name="Vehicle_Age"class="form-control" placeholder="Vehicle_Age" required="required" /><br><br>
+
+              <input type="text" name="Vehicle_Damage" class="form-control" placeholder="Vehicle_Damage" required="required" /><br><br>
+              <input type="text" name="Annual_Premium" class="form-control" placeholder="Annual_Premium" required="required" /><br><br>
+              <input type="text" name="Policy_Sales_Channel"class="form-control" placeholder="Policy_Sales_Channel" required="required" /><br><br>
+
+
+              <input type="text" name="Vintage" class="form-control" placeholder ="Vintage" required="required" /><br><br>
+              
+        
+        
+              <button type="submit" class="btn btn-primary btn-block btn-block">Predict</button>
+        
+            
+            
+            </form>
+        </div>
+    <!-- </div> -->
+
+    <br>
+   <br>
+   
+{% endblock temp %}
