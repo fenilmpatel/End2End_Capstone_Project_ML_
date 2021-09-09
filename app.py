@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 import pickle
-model = pickle.load(open('capston_rf.pkl','rb'))
+model = pickle.load(open('cap_xgboost.pkl','rb'))
 
 app = Flask(__name__)
 
@@ -30,14 +30,13 @@ def predict():
     pred = pd.DataFrame(data={'Gender':[float(Gender)],'Age':[float(Age)] ,'Driving_License':[float(Driving_License)],'Region_Code':[float(Region_Code)],
                        'Previously_Insured':[float(Previously_Insured)],'Vehicle_Age':[float(Vehicle_Age)],'Vehicle_Damage':[float(Vehicle_Damage)]
                        ,'Annual_Premium': [float(Annual_Premium)],'Policy_Sales_Channel': [float(Policy_Sales_Channel)],'Vintage': [float(Vintage)]})
-    prediction = model.predict(pred)
-    output = prediction[0] 
-    if output > 0:
-        output="Genuine"
-        return render_template('prediction.html', prediction_text=f'Prediction For Applied Person is {output} Person.')
+    prediction = model.predict(pred) 
+    if prediction > 0:
+        
+        return render_template('prediction.html', prediction_text=prediction)
     else:
-        output = "Fraud"
-        return render_template('prediction.html', prediction_text=f'Prediction For Applied Person is {output} Person!!')
+        
+        return render_template('prediction.html', prediction_text=prediction)
    
 port = int(os.environ.get('PORT',5000))
 if __name__ == "__main__":
